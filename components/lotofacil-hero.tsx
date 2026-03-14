@@ -77,7 +77,7 @@ export function LotofacilHero({ game }: { game: Game }) {
 
           <div className="w-full flex justify-between items-end mt-4 px-2 md:px-8 relative h-32 md:h-40 pointer-events-none">
             <div className="absolute bottom-4 left-6 md:left-12 z-20 pointer-events-auto">
-              <img src="/logo.png" alt="Lauri Ponto da Sorte" className="h-14 w-auto object-contain drop-shadow-xl" />
+              <img src="/logo2.png" alt="Lauri Ponto da Sorte" className="h-14 w-auto object-contain drop-shadow-xl" />
             </div>
           </div>
           {/* Imagem posicionada absolutamente no card, fora do container limitado */}

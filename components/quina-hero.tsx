@@ -13,7 +13,7 @@ export function QuinaHero({ game }: { game: Game }) {
         <div className="absolute bottom-0 left-0 p-4 opacity-40 mix-blend-overlay">
           <span className="material-symbols-outlined text-yellow-300 text-6xl -rotate-12">monetization_on</span>
         </div>
-        
+
         <div className="relative z-10 px-6 py-8 flex flex-col items-center text-center">
           <div className="mb-4 flex flex-col items-center">
             <div className="flex items-center gap-2 mb-2">
@@ -26,7 +26,7 @@ export function QuinaHero({ game }: { game: Game }) {
               Concurso: {game.concurso} • Sorteio {game.sorteio}
             </div>
           </div>
-          
+
           <div className="mb-8 relative">
             <div className="font-handwriting text-white text-3xl md:text-5xl -rotate-6 font-script relative z-10 drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]" style={{ fontFamily: "cursive" }}>
               Acumulou!
@@ -36,7 +36,7 @@ export function QuinaHero({ game }: { game: Game }) {
             </h3>
             <span className="absolute -right-8 top-10 material-symbols-outlined text-yellow-500 text-4xl animate-bounce">savings</span>
           </div>
-          
+
           <div className="w-full max-w-2xl space-y-4">
             {game.options.map(opt => (
               <div key={opt.id} onClick={() => addToCart(game, opt)} className="group quina-pill rounded-full border-[3px] border-[#d49e2a] px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4 transition-transform hover:scale-[1.02] cursor-pointer">
@@ -56,9 +56,9 @@ export function QuinaHero({ game }: { game: Game }) {
               </div>
             ))}
           </div>
-          
+
           <div className="mt-8 inline-flex">
-            <img src="/logo.png" alt="Lauri Ponto da Sorte" className="h-14 w-auto object-contain drop-shadow-lg" />
+            <img src="/logo2.png" alt="Lauri Ponto da Sorte" className="h-14 w-auto object-contain drop-shadow-lg" />
           </div>
         </div>
       </div>

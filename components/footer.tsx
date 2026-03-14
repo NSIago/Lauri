@@ -26,7 +26,7 @@ export function Footer() {
       <div className="bg-black/80 py-6 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="bg-white px-4 py-2 rounded-lg flex items-center justify-center">
-            <img src="/logo.png" alt="Lauri Ponto da Sorte" className="h-12 w-auto object-contain" />
+            <img src="/logo2.png" alt="Lauri Ponto da Sorte" className="h-12 w-auto object-contain" />
           </div>
           <nav className="flex gap-6 md:gap-10">
             <a className="text-sm font-bold text-white hover:text-yellow-400 uppercase tracking-wide" href="#">Sobre Nós</a>
