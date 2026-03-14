@@ -19,7 +19,7 @@ export function Footer() {
           </div>
           <div className="relative w-32 h-32 md:-mt-16 md:-mb-8">
             <div className="w-full h-full rounded-full bg-gray-200 border-4 border-white overflow-hidden shadow-xl">
-              <img alt="Owner" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3U1XuClUwdkUBZv4-ruTyJSPP9ZzG5GRCtSxkSuHoY8_-sipc7t0uq-yQAFAn8u5i9WzAWYv3omV62wuDUchsipQKnJiohyTCZ_V5iB5MSGfw-mDZdSTo_SdkN_RFPwelIbetxQn978CJQbH7PxGET4DjvndFNy_-9AFMoRM1-cEhY6tJKAppb2s702KJ5bs2U16x12JrpYyW4ZzSa11cVgP9ou5BF1-keXI59gCNnhUbeo3-9RTxQnD83NSMoy2-hKEUkb13qAPq"/>
+              <img alt="Owner" className="w-full h-full object-cover" src="https://i.imgur.com/ovdBFYv.png" />
             </div>
           </div>
         </div>

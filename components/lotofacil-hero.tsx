@@ -61,6 +61,7 @@ export function LotofacilHero({ game }: { game: Game }) {
                   </div>
                   <button className="bg-[#00bb2d] hover:bg-[#009824] text-white p-2 rounded-full shadow-lg transition-transform active:scale-95 border-2 border-white" title="Adicionar ao Carrinho">
                     <span className="material-symbols-outlined">add_shopping_cart</span>
+
                   </button>
                 </div>
               </div>
@@ -82,9 +83,14 @@ export function LotofacilHero({ game }: { game: Game }) {
               </div>
               <span className="bg-yellow-400 text-black text-[8px] font-bold px-1 rounded-sm w-full text-center uppercase tracking-wider -mt-1 block">Ponto da Sorte</span>
             </div>
-            <div className="absolute bottom-0 right-0 h-48 md:h-64 w-40 md:w-56 overflow-visible z-10 pointer-events-none flex items-end justify-end">
-              <img alt="Happy Winner" className="h-full w-full object-contain object-bottom transform translate-y-2 hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeBt5eMwRCQcWzAYWZWAXHIxbILIzIrV9Gc4ROMxGvqP0X7ThGlmKkIHZfuNXl0cOANKnaW9Ef5ohSIeJv_cDLHjz4KSofw47YUe9KUZO9UYBG5IaNV-iDkrsztZ3DJ3T7eRfYul3nOKoibunVKxJqWIhCQ_ktNedjJ8JrOXyEY_Yqqc0rwhMZv0FOqgpj_4V1Keo_UQpRLZ57TB4-R8pTlGzRwHH9ZSf_JqUgLQfTbTOdXk2y0If8Fip0zt94XVJtJSkM9eSlmhrs" />
-            </div>
+          </div>
+          {/* Imagem posicionada absolutamente no card, fora do container limitado */}
+          <div className="absolute bottom-0 right-4 md:right-8 w-44 md:w-64 h-56 md:h-80 pointer-events-none z-10">
+            <img
+              alt="Happy Winner"
+              className="w-full h-full object-contain object-bottom hover:scale-105 transition-transform duration-500"
+              src="https://i.imgur.com/mrg3oh1.png"
+            />
           </div>
         </div>
       </div>
