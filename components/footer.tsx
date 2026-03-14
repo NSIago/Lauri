@@ -1,4 +1,3 @@
-import { Clover } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -26,12 +25,8 @@ export function Footer() {
       </div>
       <div className="bg-black/80 py-6 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="bg-white px-4 py-2 rounded-lg flex flex-col items-center">
-            <div className="flex items-center gap-1 text-lauri-green">
-              <Clover className="w-6 h-6 fill-lauri-green text-lauri-green" />
-              <span className="text-xl font-black tracking-tighter text-black">Lauri</span>
-            </div>
-            <span className="bg-yellow-400 text-black text-[8px] font-bold px-1 rounded-sm w-full text-center uppercase tracking-wider -mt-1">Ponto da Sorte</span>
+          <div className="bg-white px-4 py-2 rounded-lg flex items-center justify-center">
+            <img src="/logo.png" alt="Lauri Ponto da Sorte" className="h-12 w-auto object-contain" />
           </div>
           <nav className="flex gap-6 md:gap-10">
             <a className="text-sm font-bold text-white hover:text-yellow-400 uppercase tracking-wide" href="#">Sobre Nós</a>

@@ -1,6 +1,5 @@
 'use client';
 import { Game, useStore } from '@/lib/store';
-import { Clover } from 'lucide-react';
 
 export function QuinaHero({ game }: { game: Game }) {
   const { addToCart } = useStore();
@@ -58,12 +57,8 @@ export function QuinaHero({ game }: { game: Game }) {
             ))}
           </div>
           
-          <div className="mt-8 bg-white px-6 py-2 rounded-lg inline-flex flex-col items-center shadow-lg transform rotate-1">
-            <div className="flex items-center gap-1 text-lauri-green">
-              <Clover className="w-6 h-6 fill-lauri-green text-lauri-green" />
-              <span className="text-xl font-black tracking-tighter text-black">Lauri</span>
-            </div>
-            <span className="bg-yellow-400 text-black text-[8px] font-bold px-1 rounded-sm w-full text-center uppercase tracking-wider -mt-1">Ponto da Sorte</span>
+          <div className="mt-8 inline-flex">
+            <img src="/logo.png" alt="Lauri Ponto da Sorte" className="h-14 w-auto object-contain drop-shadow-lg" />
           </div>
         </div>
       </div>
