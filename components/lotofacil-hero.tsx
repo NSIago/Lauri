@@ -75,17 +75,16 @@ export function LotofacilHero({ game }: { game: Game }) {
             </p>
           </div>
 
-          <div className="w-full flex justify-between items-end mt-4 px-2 md:px-8 relative h-32 md:h-40 pointer-events-none">
-            <div className="absolute bottom-4 left-6 md:left-12 z-20 pointer-events-auto">
-              <img src="/logo2.png" alt="Lauri Ponto da Sorte" className="h-14 w-auto object-contain drop-shadow-xl" />
-            </div>
+          {/* Logo no rodapé esquerdo do card */}
+          <div className="absolute bottom-4 left-4 md:left-8 z-20 pointer-events-auto bg-white rounded-xl px-3 py-2 shadow-xl">
+            <img src="/logo2.png" alt="Lauri Ponto da Sorte" className="h-12 w-auto object-contain" />
           </div>
-          {/* Imagem posicionada absolutamente no card, fora do container limitado */}
-          <div className="absolute bottom-0 right-4 md:right-8 w-44 md:w-64 h-56 md:h-80 pointer-events-none z-10">
+          {/* Imagem da pessoa no canto direito com ajuste manual pra colar o cotovelo */}
+          <div className="absolute bottom-0 right-0 w-44 h-56 md:h-80 pointer-events-none z-0 translate-x-6 md:translate-x-12">
             <img
               alt="Happy Winner"
-              className="w-full h-full object-contain object-bottom hover:scale-105 transition-transform duration-500"
-              src="https://i.imgur.com/mrg3oh1.png"
+              className="w-full h-full object-contain object-right-bottom hover:scale-105 transition-transform duration-500"
+              src="/laurip3.png"
             />
           </div>
         </div>

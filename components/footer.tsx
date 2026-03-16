@@ -36,7 +36,7 @@ export function Footer() {
         </div>
         <div className="max-w-7xl mx-auto mt-6 text-center border-t border-white/10 pt-4">
           <p className="text-xs text-gray-400">
-            Este jogo responsável de logo do qundo neoomorresiios veits interesenario de iambeto. Conacao responsável, entie se muito scivere.
+            Eu ainda vou colocar um texto aqui, mas não sei qual é o texto que vai ficar aqui ainda
           </p>
         </div>
       </div>
