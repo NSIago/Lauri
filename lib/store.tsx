@@ -11,7 +11,7 @@ export type GameOption = {
 
 export type Game = {
   id: string;
-  type: 'lotofacil' | 'megasena' | 'quina';
+  type: 'lotofacil' | 'megasena' | 'quina' | 'duplasena' | 'lotomania';
   title: string;
   concurso: string;
   sorteio: string;
@@ -73,6 +73,34 @@ const defaultGames: Game[] = [
       { id: 'opt-9', jogos: 30, dezenas: 6, price: 81 },
       { id: 'opt-10', jogos: 40, dezenas: 6, price: 108 },
       { id: 'opt-11', jogos: 50, dezenas: 6, price: 135 },
+    ]
+  },
+  {
+    id: 'duplasena-1',
+    type: 'duplasena',
+    title: 'Dupla Sena',
+    concurso: '2780',
+    sorteio: '15/03',
+    prize: '7 MILHÕES',
+    active: true,
+    options: [
+      { id: 'opt-12', jogos: 10, dezenas: 7, price: 30 },
+      { id: 'opt-13', jogos: 20, dezenas: 7, price: 60 },
+      { id: 'opt-14', jogos: 30, dezenas: 7, price: 90 },
+    ]
+  },
+  {
+    id: 'lotomania-1',
+    type: 'lotomania',
+    title: 'Lotomania',
+    concurso: '2730',
+    sorteio: '15/03',
+    prize: '4,5 MILHÕES',
+    active: true,
+    options: [
+      { id: 'opt-15', jogos: 10, dezenas: 50, price: 35 },
+      { id: 'opt-16', jogos: 20, dezenas: 50, price: 70 },
+      { id: 'opt-17', jogos: 30, dezenas: 50, price: 105 },
     ]
   }
 ];

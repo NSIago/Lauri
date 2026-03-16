@@ -1,10 +1,18 @@
 'use client';
 import { Game, GameOption, useStore } from '@/lib/store';
 
-export function GameCard({ game, option, color }: { game: Game, option: GameOption, color: 'purple' | 'green' }) {
+export function GameCard({ game, option, color }: { game: Game, option: GameOption, color: 'purple' | 'green' | 'blue' | 'red' | 'orange' }) {
   const { addToCart } = useStore();
   
-  const headerColor = color === 'purple' ? 'bg-lauri-purple' : 'bg-[#009933]';
+  const colorMap: Record<string, string> = {
+    purple: 'bg-lauri-purple',
+    green: 'bg-[#009933]',
+    blue: 'bg-quina-blue',
+    red: 'bg-duplasena-red',
+    orange: 'bg-lotomania-orange',
+  };
+  
+  const headerColor = colorMap[color] || 'bg-lauri-purple';
   
   return (
     <div className="bg-white rounded-xl border-4 border-[#d49e2a] p-1 shadow-2xl overflow-hidden relative group">

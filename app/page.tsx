@@ -5,6 +5,8 @@ import { Footer } from '@/components/footer';
 import { Cart } from '@/components/cart';
 import { LotofacilHero } from '@/components/lotofacil-hero';
 import { QuinaHero } from '@/components/quina-hero';
+import { DuplaSenaHero } from '@/components/duplasena-hero';
+import { LotomaniaHero } from '@/components/lotomania-hero';
 import { GameCard } from '@/components/game-card';
 import Link from 'next/link';
 import { Clover } from 'lucide-react';
@@ -15,6 +17,8 @@ export default function Home() {
   const lotofacil = games.find(g => g.type === 'lotofacil');
   const megasena = games.find(g => g.type === 'megasena');
   const quina = games.find(g => g.type === 'quina');
+  const duplasena = games.find(g => g.type === 'duplasena');
+  const lotomania = games.find(g => g.type === 'lotomania');
 
   return (
     <>
@@ -80,6 +84,10 @@ export default function Home() {
             )}
 
             {quina?.active && <QuinaHero game={quina} />}
+
+            {duplasena?.active && <DuplaSenaHero game={duplasena} />}
+
+            {lotomania?.active && <LotomaniaHero game={lotomania} />}
           </div>
 
           <div className="w-full lg:w-96 shrink-0 relative z-20">
