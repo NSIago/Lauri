@@ -57,8 +57,8 @@ export function DuplaSenaHero({ game }: { game: Game }) {
             ))}
           </div>
 
-          <div className="mt-8 inline-flex">
-            <img src="/logo2.png" alt="Lauri Ponto da Sorte" className="h-14 w-auto object-contain drop-shadow-lg" />
+          <div className="mt-8 inline-flex bg-white rounded-xl px-3 py-2 shadow-xl">
+            <img src="/logo2.png" alt="Lauri Ponto da Sorte" className="h-12 w-auto object-contain" />
           </div>
         </div>
       </div>
