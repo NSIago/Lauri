@@ -1,6 +1,5 @@
 'use client';
 import { Game, useStore } from '@/lib/store';
-import Image from 'next/image';
 import { Clover } from 'lucide-react';
 
 export function LotofacilHero({ game }: { game: Game }) {
@@ -8,82 +7,93 @@ export function LotofacilHero({ game }: { game: Game }) {
 
   return (
     <div className="relative w-full">
-      <div className="rounded-3xl border-[6px] border-[#d49e2a] shadow-[0_0_35px_rgba(157,59,245,0.6)] bg-loto-final-zero relative overflow-hidden">
-        <div className="absolute top-10 left-10 opacity-60 animate-float">
+      <div className="rounded-2xl sm:rounded-3xl border-4 sm:border-[6px] border-[#d49e2a] shadow-[0_0_35px_rgba(157,59,245,0.6)] bg-loto-final-zero relative overflow-hidden">
+        {/* Decorativos */}
+        <div className="absolute top-6 left-6 opacity-40 animate-float hidden sm:block">
+          <span className="material-symbols-outlined text-[#ffd700] text-4xl drop-shadow-md">monetization_on</span>
+        </div>
+        <div className="absolute bottom-16 right-6 opacity-30 animate-float hidden sm:block" style={{ animationDelay: '1s' }}>
           <span className="material-symbols-outlined text-[#ffd700] text-5xl drop-shadow-md">monetization_on</span>
         </div>
-        <div className="absolute bottom-20 right-10 opacity-50 animate-float" style={{ animationDelay: '1s' }}>
-          <span className="material-symbols-outlined text-[#ffd700] text-6xl drop-shadow-md">monetization_on</span>
-        </div>
-        <div className="absolute top-20 right-20 opacity-30">
-          <Clover className="text-[#a030ff] w-20 h-20 rotate-12" />
-        </div>
-        <div className="absolute bottom-10 left-20 opacity-30">
-          <Clover className="text-[#a030ff] w-24 h-24 -rotate-12" />
+        <div className="absolute top-16 right-16 opacity-20 hidden sm:block">
+          <Clover className="text-[#a030ff] w-16 h-16 rotate-12" />
         </div>
 
-        <div className="relative z-10 px-6 py-8 flex flex-col items-center text-center">
+        <div className="relative z-10 px-4 sm:px-6 py-6 sm:py-8 flex flex-col items-center text-center">
+          {/* Título */}
           <div className="mb-2 flex flex-col items-center">
-            <div className="flex items-center justify-center gap-3 mb-1">
-              <Clover className="text-white w-12 h-12 drop-shadow-lg" />
-              <h2 className="text-5xl md:text-7xl font-black uppercase text-white tracking-tighter italic drop-shadow-[0_4px_0_#4a0072]" style={{ fontFamily: "'Arial Black', sans-serif" }}>{game.title}</h2>
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-1">
+              <Clover className="text-white w-8 h-8 sm:w-12 sm:h-12 drop-shadow-lg" />
+              <h2
+                className="text-4xl sm:text-5xl md:text-7xl font-black uppercase text-white tracking-tighter italic drop-shadow-[0_4px_0_#4a0072]"
+                style={{ fontFamily: "'Arial Black', sans-serif" }}
+              >
+                {game.title}
+              </h2>
             </div>
-            <div className="text-white font-bold text-sm md:text-base tracking-wide bg-purple-900/50 px-6 py-1 rounded-full border border-purple-400/30 backdrop-blur-sm">
+            <div className="text-white font-bold text-xs sm:text-sm tracking-wide bg-purple-900/50 px-4 py-1 rounded-full border border-purple-400/30 backdrop-blur-sm">
               Concurso: {game.concurso} • Sorteio {game.sorteio}
             </div>
           </div>
 
-          <div className="mb-8 relative flex flex-col items-center">
-            <div className="flex items-center gap-2 mb-2 bg-gradient-to-r from-transparent via-purple-900/60 to-transparent px-8 py-1">
-              <span className="text-2xl font-black text-white italic tracking-wide uppercase">FINAL ZERO</span>
-              <div className="relative">
-                <span className="material-symbols-outlined text-[#ffd700] text-3xl">savings</span>
-                <span className="material-symbols-outlined text-[#ffd700] text-xl absolute -top-1 -right-2 animate-bounce">attach_money</span>
-              </div>
+          {/* Prêmio */}
+          <div className="mb-6 sm:mb-8 relative flex flex-col items-center">
+            <div className="flex items-center gap-2 mb-1 bg-gradient-to-r from-transparent via-purple-900/60 to-transparent px-6 py-1">
+              <span className="text-lg sm:text-2xl font-black text-white italic tracking-wide uppercase">FINAL ZERO</span>
             </div>
-            <h3 className="text-6xl md:text-8xl font-black text-gradient-gold drop-shadow-[0_6px_6px_rgba(0,0,0,0.8)] leading-none glow-text">
+            <h3 className="text-5xl sm:text-6xl md:text-8xl font-black text-gradient-gold drop-shadow-[0_6px_6px_rgba(0,0,0,0.8)] leading-none glow-text">
               {game.prize}
             </h3>
           </div>
 
-          <div className="w-full max-w-2xl space-y-4 mb-6">
+          {/* Opções */}
+          <div className="w-full max-w-2xl space-y-3 sm:space-y-4 mb-6">
             {game.options.map(opt => (
-              <div key={opt.id} onClick={() => addToCart(game, opt)} className="group loto-pill rounded-full border-[3px] border-[#d49e2a] px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4 transition-transform hover:scale-[1.02] cursor-pointer relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#f0ebff] to-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative z-10 flex flex-col md:flex-row items-center gap-2 text-loto-pill-text font-black text-lg md:text-xl uppercase flex-1 justify-center md:justify-start pl-0 md:pl-4">
-                  <span className="text-2xl text-[#aa00ff]">{opt.jogos} JOGOS</span>
-                  <span className="hidden md:inline text-gray-400">/</span>
-                  <span className="text-[#aa00ff]">{opt.dezenas} DEZENAS</span>
+              <div
+                key={opt.id}
+                onClick={() => addToCart(game, opt)}
+                className="group loto-pill rounded-full border-[3px] border-[#d49e2a] px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between gap-2 sm:gap-4 transition-transform hover:scale-[1.02] cursor-pointer relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-[#f0ebff] to-white opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
+                <div className="relative z-10 flex items-center gap-1 sm:gap-2 text-loto-pill-text font-black text-base sm:text-xl uppercase pl-2 sm:pl-4 flex-1">
+                  <span className="text-[#aa00ff]">{opt.jogos} JOGOS</span>
+                  <span className="text-gray-400 text-sm">/</span>
+                  <span className="text-[#aa00ff] text-sm sm:text-base">{opt.dezenas} DEZENAS</span>
                 </div>
-                <div className="relative z-10 flex items-center gap-3">
-                  <div className="bg-[#aa00ff] text-white px-5 py-1 rounded-full font-black text-xl shadow-inner min-w-[130px] border border-[#d49e2a]">
+                <div className="relative z-10 flex items-center gap-2 sm:gap-3 shrink-0">
+                  <div className="bg-[#aa00ff] text-white px-3 sm:px-5 py-1 rounded-full font-black text-base sm:text-xl shadow-inner min-w-[100px] sm:min-w-[130px] text-center border border-[#d49e2a]">
                     R$ {opt.price.toFixed(2)}
                   </div>
-                  <button className="bg-[#00bb2d] hover:bg-[#009824] text-white p-2 rounded-full shadow-lg transition-transform active:scale-95 border-2 border-white" title="Adicionar ao Carrinho">
-                    <span className="material-symbols-outlined">add_shopping_cart</span>
-
+                  <button
+                    className="bg-[#00bb2d] hover:bg-[#009824] text-white p-2 rounded-full shadow-lg transition-transform active:scale-95 border-2 border-white"
+                    title="Adicionar ao Carrinho"
+                  >
+                    <span className="material-symbols-outlined text-[20px] sm:text-[24px]">add_shopping_cart</span>
                   </button>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mb-6 px-4">
-            <p className="text-white text-lg md:text-xl italic font-medium drop-shadow-md">
-              "Já pagamos <span className="font-black text-[#ffd700]">10 prêmios principais</span> só na Lotofácil<br />
-              e o próximo pode ser o seu!"
+          {/* Frase */}
+          <div className="text-center mb-16 sm:mb-20 px-2 sm:px-4">
+            <p className="text-white text-sm sm:text-lg md:text-xl italic font-medium drop-shadow-md leading-relaxed">
+              {'"Já pagamos '}<span className="font-black text-[#ffd700]">10 prêmios principais</span>{' só na Lotofácil'}
+              <br />
+              {' e o próximo pode ser o seu!"'}
             </p>
           </div>
 
-          {/* Logo no rodapé esquerdo do card */}
-          <div className="absolute bottom-4 left-4 md:left-8 z-20 pointer-events-auto bg-white rounded-xl px-3 py-2 shadow-xl">
-            <img src="/logo2.png" alt="Lauri Ponto da Sorte" className="h-12 w-auto object-contain" />
+          {/* Logo */}
+          <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-8 z-20 bg-white rounded-xl px-2 sm:px-3 py-1.5 sm:py-2 shadow-xl">
+            <img src="/logo2.png" alt="Lauri Ponto da Sorte" className="h-9 sm:h-12 w-auto object-contain" />
           </div>
-          {/* Imagem da pessoa no canto direito com ajuste manual pra colar o cotovelo */}
-          <div className="absolute bottom-0 right-0 w-44 h-56 md:h-80 pointer-events-none z-0 translate-x-6 md:translate-x-12">
+
+          {/* Foto */}
+          <div className="absolute bottom-0 right-0 w-32 sm:w-44 md:w-56 h-44 sm:h-60 md:h-80 pointer-events-none z-10 translate-x-4 sm:translate-x-8 md:translate-x-12">
             <img
-              alt="Happy Winner"
-              className="w-full h-full object-contain object-right-bottom hover:scale-105 transition-transform duration-500"
+              alt="Lauri"
+              className="w-full h-full object-contain object-right-bottom"
               src="/laurip3.png"
             />
           </div>
