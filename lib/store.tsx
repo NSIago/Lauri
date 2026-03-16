@@ -125,8 +125,14 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     const savedGames = localStorage.getItem('lauri_games');
     if (savedGames) {
       try {
-        setGames(JSON.parse(savedGames));
-      } catch (e) {}
+        const parsed = JSON.parse(savedGames) as Game[];
+        // Merge: keep saved games but add any new default games that don't exist
+        const savedIds = new Set(parsed.map(g => g.type));
+        const newGames = defaultGames.filter(g => !savedIds.has(g.type));
+        setGames([...parsed, ...newGames]);
+      } catch (e) {
+        setGames(defaultGames);
+      }
     }
     const savedCart = localStorage.getItem('lauri_cart');
     if (savedCart) {
