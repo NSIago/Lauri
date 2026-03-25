@@ -35,9 +35,9 @@ const defaultGames: Game[] = [
     id: 'loto-1',
     type: 'lotofacil',
     title: 'Lotofácil',
-    concurso: '3620',
-    sorteio: '24/02',
-    prize: '6,5 MILHÕES',
+    concurso: '3645',
+    sorteio: '25/03',
+    prize: '2 MILHÕES',
     active: true,
     options: [
       { id: 'opt-1', jogos: 18, dezenas: 15, price: 28 },
@@ -50,9 +50,9 @@ const defaultGames: Game[] = [
     id: 'mega-1',
     type: 'megasena',
     title: 'Mega-Sena',
-    concurso: '2978',
-    sorteio: '12/02',
-    prize: '34 MILHÕES',
+    concurso: '2989',
+    sorteio: '26/03',
+    prize: '17 MILHÕES',
     active: true,
     options: [
       { id: 'opt-5', jogos: 6, dezenas: 7, price: 34 },
@@ -63,9 +63,9 @@ const defaultGames: Game[] = [
     id: 'quina-1',
     type: 'quina',
     title: 'Quina',
-    concurso: '6952',
-    sorteio: '12/02',
-    prize: '18 MILHÕES',
+    concurso: '6985',
+    sorteio: '25/03',
+    prize: '6,5 MILHÕES',
     active: true,
     options: [
       { id: 'opt-7', jogos: 10, dezenas: 6, price: 27 },
@@ -79,9 +79,9 @@ const defaultGames: Game[] = [
     id: 'duplasena-1',
     type: 'duplasena',
     title: 'Dupla Sena',
-    concurso: '2780',
-    sorteio: '15/03',
-    prize: '7 MILHÕES',
+    concurso: '2940',
+    sorteio: '04/04',
+    prize: '35 MILHÕES',
     active: true,
     options: [
       { id: 'opt-12', jogos: 10, dezenas: 7, price: 30 },
@@ -93,9 +93,9 @@ const defaultGames: Game[] = [
     id: 'lotomania-1',
     type: 'lotomania',
     title: 'Lotomania',
-    concurso: '2730',
-    sorteio: '15/03',
-    prize: '4,5 MILHÕES',
+    concurso: '2904',
+    sorteio: '25/03',
+    prize: '7,8 MILHÕES',
     active: true,
     options: [
       { id: 'opt-15', jogos: 10, dezenas: 50, price: 35 },
@@ -137,17 +137,25 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     }
     setGames(baseGames);
 
-    // Busca concursos atuais da Caixa automaticamente
-    fetch('/api/concursos')
-      .then(r => r.json())
+    // Busca concursos atuais da Caixa automaticamente — sempre sobrescreve concurso/sorteio/prize
+    fetch('/api/concursos', { cache: 'no-store' })
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then((data: Record<string, { concurso: string; sorteio: string; prize: string } | null>) => {
         setGames(prev => prev.map(game => {
           const info = data[game.type];
-          if (!info) return game;
-          return { ...game, concurso: info.concurso, sorteio: info.sorteio, prize: info.prize };
+          if (!info || !info.concurso) return game;
+          return {
+            ...game,
+            concurso: info.concurso,
+            sorteio: info.sorteio,
+            prize: info.prize || game.prize,
+          };
         }));
       })
-      .catch(() => {/* mantém valores do store */});
+      .catch(() => { /* mantém valores default */ });
 
     const savedCart = localStorage.getItem('lauri_cart');
     if (savedCart) {
@@ -161,7 +169,15 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (isLoaded) {
       try {
-        localStorage.setItem('lauri_games', JSON.stringify(games));
+        // Salva apenas as opções/configurações, NÃO concurso/sorteio/prize
+        // (esses vêm sempre da API da Caixa em tempo real)
+        const toSave = games.map(g => ({
+          ...g,
+          concurso: '',
+          sorteio: '',
+          prize: '',
+        }));
+        localStorage.setItem('lauri_games', JSON.stringify(toSave));
       } catch (e) {
         console.error('Error saving games to localStorage:', e);
       }
