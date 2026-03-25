@@ -52,23 +52,27 @@ export function LotofacilHero({ game }: { game: Game }) {
               <div
                 key={opt.id}
                 onClick={() => addToCart(game, opt)}
-                className="group loto-pill rounded-full border-[3px] border-[#d49e2a] px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between gap-2 sm:gap-4 transition-transform hover:scale-[1.02] cursor-pointer relative overflow-hidden"
+                className="group loto-pill rounded-full border-[3px] border-[#d49e2a] px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4 transition-transform hover:scale-[1.02] cursor-pointer relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#f0ebff] to-white opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
-                <div className="relative z-10 flex items-center gap-1 text-loto-pill-text font-black text-sm sm:text-xl uppercase pl-2 sm:pl-4 whitespace-nowrap">
-                  <span className="text-[#aa00ff]">{opt.jogos} JOGOS</span>
+                {/* Info: Jogos / Dezenas */}
+                <div className="relative z-10 flex items-center gap-1 text-[#aa00ff] font-black text-sm sm:text-xl uppercase pl-1 sm:pl-2 whitespace-nowrap">
+                  <span>{opt.jogos} JOGOS</span>
                   <span className="text-gray-400 mx-0.5">/</span>
-                  <span className="text-[#aa00ff]">{opt.dezenas} DEZENAS</span>
+                  <span>{opt.dezenas} DEZENAS</span>
                 </div>
-                <div className="relative z-10 flex items-center gap-1.5 sm:gap-3 shrink-0">
-                  <div className="bg-[#aa00ff] text-white px-2.5 sm:px-5 py-1 rounded-full font-black text-sm sm:text-xl shadow-inner text-center border border-[#d49e2a] whitespace-nowrap">
-                    R$ {opt.price.toFixed(2)}
+                {/* Preço + Botão */}
+                <div className="relative z-10 flex items-center gap-2 sm:gap-3 shrink-0">
+                  <div className="flex flex-col items-center">
+                    <div className="bg-[#aa00ff] text-white px-3 sm:px-5 py-1 sm:py-1.5 rounded-full font-black text-sm sm:text-lg shadow-inner text-center border border-[#d49e2a] whitespace-nowrap leading-tight">
+                      R$ {opt.price.toFixed(2)}
+                    </div>
                   </div>
                   <button
-                    className="bg-[#00bb2d] hover:bg-[#009824] text-white p-1.5 sm:p-2 rounded-full shadow-lg transition-transform active:scale-95 border-2 border-white shrink-0"
+                    className="bg-[#00bb2d] hover:bg-[#009824] text-white p-2.5 sm:p-3 rounded-full shadow-lg transition-transform active:scale-95 border-2 border-white shrink-0"
                     title="Adicionar ao Carrinho"
                   >
-                    <span className="material-symbols-outlined text-[18px] sm:text-[24px]">add_shopping_cart</span>
+                    <span className="material-symbols-outlined text-[22px] sm:text-[28px]">add_shopping_cart</span>
                   </button>
                 </div>
               </div>

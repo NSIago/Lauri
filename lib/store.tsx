@@ -122,23 +122,38 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // Carrega jogos do localStorage (ou default)
     const savedGames = localStorage.getItem('lauri_games');
+    let baseGames = defaultGames;
     if (savedGames) {
       try {
         const parsed = JSON.parse(savedGames) as Game[];
-        // Merge: keep saved games but add any new default games that don't exist
         const savedIds = new Set(parsed.map(g => g.type));
         const newGames = defaultGames.filter(g => !savedIds.has(g.type));
-        setGames([...parsed, ...newGames]);
-      } catch (e) {
-        setGames(defaultGames);
+        baseGames = [...parsed, ...newGames];
+      } catch {
+        baseGames = defaultGames;
       }
     }
+    setGames(baseGames);
+
+    // Busca concursos atuais da Caixa automaticamente
+    fetch('/api/concursos')
+      .then(r => r.json())
+      .then((data: Record<string, { concurso: string; sorteio: string; prize: string } | null>) => {
+        setGames(prev => prev.map(game => {
+          const info = data[game.type];
+          if (!info) return game;
+          return { ...game, concurso: info.concurso, sorteio: info.sorteio, prize: info.prize };
+        }));
+      })
+      .catch(() => {/* mantém valores do store */});
+
     const savedCart = localStorage.getItem('lauri_cart');
     if (savedCart) {
       try {
         setCart(JSON.parse(savedCart));
-      } catch (e) {}
+      } catch { /* ignora */ }
     }
     setIsLoaded(true);
   }, []);
