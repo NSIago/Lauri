@@ -54,20 +54,20 @@ export function DuplaSenaHero({ game }: { game: Game }) {
                 onClick={() => addToCart(game, opt)}
                 className="group duplasena-pill rounded-full border-[3px] border-[#d49e2a] px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between gap-2 sm:gap-4 transition-transform hover:scale-[1.02] cursor-pointer"
               >
-                <div className="flex items-center gap-1 sm:gap-2 text-[#C4161C] font-black text-base sm:text-xl uppercase flex-1 pl-2 sm:pl-4">
+                <div className="flex items-center gap-1 text-[#C4161C] font-black text-sm sm:text-xl uppercase pl-2 sm:pl-4 whitespace-nowrap">
                   <span>{opt.jogos} JOGOS</span>
-                  <span className="text-gray-400 text-sm">/</span>
-                  <span className="text-sm sm:text-base">{opt.dezenas} DEZENAS</span>
+                  <span className="text-gray-400 mx-0.5">/</span>
+                  <span>{opt.dezenas} DEZENAS</span>
                 </div>
-                <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-                  <div className="bg-[#C4161C] text-white px-3 sm:px-4 py-1 rounded-full font-black text-base sm:text-xl shadow-inner min-w-[100px] sm:min-w-[120px] text-center">
+                <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+                  <div className="bg-[#C4161C] text-white px-2.5 sm:px-4 py-1 rounded-full font-black text-sm sm:text-xl shadow-inner text-center whitespace-nowrap">
                     R$ {opt.price.toFixed(2)}
                   </div>
                   <button
-                    className="bg-[#00bb2d] hover:bg-[#009824] text-white p-2 rounded-full shadow-lg transition-transform active:scale-95"
+                    className="bg-[#00bb2d] hover:bg-[#009824] text-white p-1.5 sm:p-2 rounded-full shadow-lg transition-transform active:scale-95 shrink-0"
                     title="Adicionar ao Carrinho"
                   >
-                    <span className="material-symbols-outlined text-[20px] sm:text-[24px]">add_shopping_cart</span>
+                    <span className="material-symbols-outlined text-[18px] sm:text-[24px]">add_shopping_cart</span>
                   </button>
                 </div>
               </div>
