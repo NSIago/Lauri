@@ -51,25 +51,28 @@ export function DuplaSenaHero({ game }: { game: Game }) {
             {game.options.map(opt => (
               <div
                 key={opt.id}
+                className="flex items-center gap-2 sm:gap-3 cursor-pointer"
                 onClick={() => addToCart(game, opt)}
-                className="group duplasena-pill rounded-full border-[3px] border-[#d49e2a] px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4 transition-transform hover:scale-[1.02] cursor-pointer"
               >
-                <div className="flex items-center gap-1 text-[#C4161C] font-black text-sm sm:text-xl uppercase pl-1 sm:pl-2 whitespace-nowrap">
-                  <span>{opt.jogos} JOGOS</span>
-                  <span className="text-gray-400 mx-0.5">/</span>
-                  <span>{opt.dezenas} DEZENAS</span>
-                </div>
-                <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-                  <div className="bg-[#C4161C] text-white px-3 sm:px-5 py-1 sm:py-1.5 rounded-full font-black text-sm sm:text-lg shadow-inner text-center whitespace-nowrap">
+                <div className="duplasena-pill rounded-full border-[3px] border-[#d49e2a] px-3 sm:px-5 py-3 flex items-center justify-between flex-1 transition-transform hover:scale-[1.01] relative overflow-hidden min-w-0">
+                  <span className="relative z-10 text-[#C4161C] font-black text-sm sm:text-xl uppercase whitespace-nowrap">
+                    {opt.jogos} JOGOS
+                  </span>
+                  <span className="relative z-10 text-gray-400 font-bold mx-1 sm:mx-2 text-sm">/</span>
+                  <span className="relative z-10 text-[#C4161C] font-black text-sm sm:text-xl uppercase whitespace-nowrap flex-1 text-left">
+                    {opt.dezenas} DEZENAS
+                  </span>
+                  <div className="relative z-10 bg-[#C4161C] text-white px-3 sm:px-5 py-1 sm:py-1.5 rounded-full font-black text-sm sm:text-lg shadow-inner whitespace-nowrap ml-2">
                     R$ {opt.price.toFixed(2)}
                   </div>
-                  <button
-                    className="bg-[#00bb2d] hover:bg-[#009824] text-white p-2.5 sm:p-3 rounded-full shadow-lg transition-transform active:scale-95 shrink-0"
-                    title="Adicionar ao Carrinho"
-                  >
-                    <span className="material-symbols-outlined text-[22px] sm:text-[28px]">add_shopping_cart</span>
-                  </button>
                 </div>
+                <button
+                  className="bg-[#00bb2d] hover:bg-[#009824] active:scale-95 text-white rounded-full shadow-lg border-2 border-white shrink-0 transition-transform flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14"
+                  title="Adicionar ao Carrinho"
+                  onClick={e => { e.stopPropagation(); addToCart(game, opt); }}
+                >
+                  <span className="material-symbols-outlined text-[22px] sm:text-[28px]">add_shopping_cart</span>
+                </button>
               </div>
             ))}
           </div>

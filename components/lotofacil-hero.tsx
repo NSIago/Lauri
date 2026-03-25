@@ -51,30 +51,31 @@ export function LotofacilHero({ game }: { game: Game }) {
             {game.options.map(opt => (
               <div
                 key={opt.id}
+                className="flex items-center gap-2 sm:gap-3 cursor-pointer group"
                 onClick={() => addToCart(game, opt)}
-                className="group loto-pill rounded-full border-[3px] border-[#d49e2a] px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4 transition-transform hover:scale-[1.02] cursor-pointer relative overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#f0ebff] to-white opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
-                {/* Info: Jogos / Dezenas */}
-                <div className="relative z-10 flex items-center gap-1 text-[#aa00ff] font-black text-sm sm:text-xl uppercase pl-1 sm:pl-2 whitespace-nowrap">
-                  <span>{opt.jogos} JOGOS</span>
-                  <span className="text-gray-400 mx-0.5">/</span>
-                  <span>{opt.dezenas} DEZENAS</span>
-                </div>
-                {/* Preço + Botão */}
-                <div className="relative z-10 flex items-center gap-2 sm:gap-3 shrink-0">
-                  <div className="flex flex-col items-center">
-                    <div className="bg-[#aa00ff] text-white px-3 sm:px-5 py-1 sm:py-1.5 rounded-full font-black text-sm sm:text-lg shadow-inner text-center border border-[#d49e2a] whitespace-nowrap leading-tight">
-                      R$ {opt.price.toFixed(2)}
-                    </div>
+                {/* Pill */}
+                <div className="group loto-pill rounded-full border-[3px] border-[#d49e2a] px-3 sm:px-5 py-3 flex items-center justify-between flex-1 transition-transform hover:scale-[1.01] relative overflow-hidden min-w-0">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#f0ebff] to-white opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
+                  <span className="relative z-10 text-[#aa00ff] font-black text-sm sm:text-xl uppercase whitespace-nowrap">
+                    {opt.jogos} JOGOS
+                  </span>
+                  <span className="relative z-10 text-gray-400 font-bold mx-1 sm:mx-2 text-sm">/</span>
+                  <span className="relative z-10 text-[#aa00ff] font-black text-sm sm:text-xl uppercase whitespace-nowrap flex-1 text-left">
+                    {opt.dezenas} DEZENAS
+                  </span>
+                  <div className="relative z-10 bg-[#aa00ff] text-white px-3 sm:px-5 py-1 sm:py-1.5 rounded-full font-black text-sm sm:text-lg shadow-inner whitespace-nowrap border border-[#d49e2a] ml-2">
+                    R$ {opt.price.toFixed(2)}
                   </div>
-                  <button
-                    className="bg-[#00bb2d] hover:bg-[#009824] text-white p-2.5 sm:p-3 rounded-full shadow-lg transition-transform active:scale-95 border-2 border-white shrink-0"
-                    title="Adicionar ao Carrinho"
-                  >
-                    <span className="material-symbols-outlined text-[22px] sm:text-[28px]">add_shopping_cart</span>
-                  </button>
                 </div>
+                {/* Botão fora da pill para não ser cortado */}
+                <button
+                  className="bg-[#00bb2d] hover:bg-[#009824] active:scale-95 text-white rounded-full shadow-lg border-2 border-white shrink-0 transition-transform flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14"
+                  title="Adicionar ao Carrinho"
+                  onClick={e => { e.stopPropagation(); addToCart(game, opt); }}
+                >
+                  <span className="material-symbols-outlined text-[22px] sm:text-[28px]">add_shopping_cart</span>
+                </button>
               </div>
             ))}
           </div>

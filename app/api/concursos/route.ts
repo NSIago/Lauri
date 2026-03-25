@@ -51,31 +51,51 @@ export async function GET() {
     fetchJogo('lotomania'),
   ]);
 
+  function nextConcurso(data: CaixaResult): string {
+    // A API às vezes retorna numeroConcursoProximo = 0; fallback: ultimo + 1
+    if (data.numeroConcursoProximo && data.numeroConcursoProximo > 0) {
+      return String(data.numeroConcursoProximo);
+    }
+    return String(data.numero + 1);
+  }
+
+  function nextSorteio(data: CaixaResult): string {
+    if (data.dataProximoConcurso) return formatSorteio(data.dataProximoConcurso);
+    return '';
+  }
+
+  function nextPrize(data: CaixaResult): string {
+    if (data.valorEstimadoProximoConcurso && data.valorEstimadoProximoConcurso > 0) {
+      return formatPrize(data.valorEstimadoProximoConcurso);
+    }
+    return '';
+  }
+
   const result = {
     lotofacil: lotofacil ? {
-      concurso: String(lotofacil.numeroConcursoProximo),
-      sorteio: formatSorteio(lotofacil.dataProximoConcurso),
-      prize: formatPrize(lotofacil.valorEstimadoProximoConcurso),
+      concurso: nextConcurso(lotofacil),
+      sorteio: nextSorteio(lotofacil),
+      prize: nextPrize(lotofacil),
     } : null,
     megasena: megasena ? {
-      concurso: String(megasena.numeroConcursoProximo),
-      sorteio: formatSorteio(megasena.dataProximoConcurso),
-      prize: formatPrize(megasena.valorEstimadoProximoConcurso),
+      concurso: nextConcurso(megasena),
+      sorteio: nextSorteio(megasena),
+      prize: nextPrize(megasena),
     } : null,
     quina: quina ? {
-      concurso: String(quina.numeroConcursoProximo),
-      sorteio: formatSorteio(quina.dataProximoConcurso),
-      prize: formatPrize(quina.valorEstimadoProximoConcurso),
+      concurso: nextConcurso(quina),
+      sorteio: nextSorteio(quina),
+      prize: nextPrize(quina),
     } : null,
     duplasena: duplasena ? {
-      concurso: String(duplasena.numeroConcursoProximo),
-      sorteio: formatSorteio(duplasena.dataProximoConcurso),
-      prize: formatPrize(duplasena.valorEstimadoProximoConcurso),
+      concurso: nextConcurso(duplasena),
+      sorteio: nextSorteio(duplasena),
+      prize: nextPrize(duplasena),
     } : null,
     lotomania: lotomania ? {
-      concurso: String(lotomania.numeroConcursoProximo),
-      sorteio: formatSorteio(lotomania.dataProximoConcurso),
-      prize: formatPrize(lotomania.valorEstimadoProximoConcurso),
+      concurso: nextConcurso(lotomania),
+      sorteio: nextSorteio(lotomania),
+      prize: nextPrize(lotomania),
     } : null,
   };
 
